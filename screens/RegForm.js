@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-
+import usernameImg from '../images/username.png';
 import UserInput from './UserInput';
 import ButtonSubmit from './ButtonSubmit';
 import SignupSection from './SignupSection';
@@ -51,7 +51,7 @@ export default class Form extends Component {
         />
         <UserInput
           source={usernameImg}
-          placeholder="Age"
+          placeholder=""
           returnKeyType={'done'}
           autoCapitalize={'none'}
           autoCorrect={false}
