@@ -1,0 +1,41 @@
+{
+  "users" : {
+    "0": {
+      "name": "John Smith",
+      "topics": [1, 3, 5, 6],
+      "work":"University Of Manchester",
+      "image": "placeholder"
+    },
+    "1": {
+        "Name": "Jaden Smith",
+        "topics": [1, 3, 5, 6],
+        "work":"University Of Manchester",
+        "image": "placeholder"
+    }
+  },
+  "topics": {
+    "0": "Video Games",
+    "1": "Fotball",
+    "2": "Cars",
+    "3": "Type of Coffee",
+    "4": "Art and culture",
+    "5": "Geography and places",
+    "6": "Health and fitness",
+    "7": "History and events",
+    "8": "Mathematics and abstractions",
+    "9": "Natural sciences and nature",
+    "10": "People and self",
+    "11":	"Philosophy and thinking",
+    "12":	"Religion and spirituality",
+    "13": "Social sciences and society",
+    "14":	"Technology and applied sciences",
+    "15":	"Members"
+  },
+  "messages": {
+    "0": {
+      "sender_id": "0",
+      "receiver_id": "1",
+      "text": "Hello"
+    }
+  }
+}
