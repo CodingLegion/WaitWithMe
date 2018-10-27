@@ -6,10 +6,11 @@ import logoImg from '../images/logo.png';
 
 export default class Logo extends Component {
   render() {
+    console.log("WaitWithMe")
     return (
       <View style={styles.container}>
         <Image source={logoImg} style={styles.image} />
-        <Text style={styles.text}>Wait With Me</Text>
+        <Text style={styles.text}>Making your waiting and commuting a fun time time</Text>
       </View>
     );
   }
@@ -22,11 +23,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   image: {
-    width: 80,
-    height: 80,
+    width: 160,
+    height: 160,
   },
   text: {
-    color: 'white',
+    fontSize:16,
+    color:'#ff71ce',
     fontWeight: 'bold',
     backgroundColor: 'transparent',
     marginTop: 20,
