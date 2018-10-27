@@ -2,11 +2,6 @@ import { GiftedChat } from 'react-native-gifted-chat'
 import React from 'react';
 import MessagesList from '../components/MessagesList'
 
-import {
-  createStackNavigator,
-} from 'react-navigation';
-
-
 export default class MessagesScreen extends React.Component {
   state = {
     conversations: [],

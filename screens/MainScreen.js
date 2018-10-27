@@ -3,6 +3,7 @@ import { Router, Scene, Actions, ActionConst } from 'react-native-router-flux';
 
 import LoginScreen from './LoginScreen.1';
 import SecondScreen from './SecondScreen';
+import MessagesScreen from './MessagesScreen';
 
 export default class Main extends Component {
   render() {
