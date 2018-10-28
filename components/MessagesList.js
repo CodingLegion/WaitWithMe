@@ -7,6 +7,9 @@ import {
   View,
   Platform
 } from 'react-native';
+import Dimensions from 'Dimensions';
+
+const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default class MessagesList extends React.Component {
   static navigationOptions = {
@@ -19,7 +22,7 @@ export default class MessagesList extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <FlatList
           ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
             <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
@@ -46,9 +49,8 @@ export default class MessagesList extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     paddingTop: 15,
-    backgroundColor: '#fff',
+    width: DEVICE_WIDTH
   },
   separator: {
     backgroundColor: 'lightgray',
@@ -60,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'white',
     marginLeft: '10%',
-    lineHeight: 40
+    lineHeight: 60
   },
   listItemDetails: {
     flexDirection: 'row',

@@ -14,13 +14,43 @@ export default class MessagesScreen extends React.Component {
       conversations: [
         {
           _id: 1,
-          name: 'Dawid Jaskot',
-          avatar: 'https://avatars3.githubusercontent.com/u/2753817?s=460&v=4',
+          name: 'Tom',
+          avatar: 'https://placeimg.com/140/140/any?1',
         },
         {
           _id: 2,
-          name: 'Angel Petrov',
-          avatar: 'https://avatars0.githubusercontent.com/u/5655514?s=460&v=4',
+          name: 'Angel',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 3,
+          name: 'John',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 4,
+          name: 'Adam',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 5,
+          name: 'Ola',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 6,
+          name: 'Gary',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 7,
+          name: 'Alex',
+          avatar: 'https://placeimg.com/140/140/any?1',
+        },
+        {
+          _id: 8,
+          name: 'Sonia',
+          avatar: 'https://placeimg.com/140/140/any?1',
         },
       ],
     })

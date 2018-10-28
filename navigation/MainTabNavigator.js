@@ -79,7 +79,7 @@ LogoutButton.navigationOptions ={
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? `ios-search${focused ? '' : '-outline'}` : 'md-search'}
+      name={Platform.OS === 'ios' ? `ios-exit${focused ? '' : '-outline'}` : 'md-exit'}
     />
   ),
 }

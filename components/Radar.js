@@ -12,7 +12,7 @@ export default class Radar extends React.Component {
           source={require('../constants/radar-scanning-animation.json')}
           autoPlay
           loop
-          style={{ height: DEVICE_WIDTH * 0.8, opacity: 0.8 }}
+          style={{ height: DEVICE_WIDTH * 0.6, opacity: 0.8, marginTop: '2%' }}
         />
       </View>
     );
