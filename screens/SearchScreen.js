@@ -13,6 +13,7 @@ import { Icon } from 'react-native-elements'
 
 import Radar from '../components/Radar';
 import Wallpaper from './Wallpaper';
+import { NavigationActions } from 'react-navigation';
 
 const mockedUsers = [
   {
@@ -124,7 +125,11 @@ export default class SearchScreen extends React.Component {
                             raised
                             name='comments'
                             type='font-awesome'
-                            onPress={() => console.log('hello')} />
+                            onPress={()=> {
+                              console.log('ok');
+                              // this.navigateToScreen('Chat')
+                              this.props.navigation.navigate('Chat');
+                            }} />
                         </View>)}
                       </View>
                     </TouchableHighlight>
@@ -135,6 +140,12 @@ export default class SearchScreen extends React.Component {
         </ScrollView>
     );
   }
+//   navigateToScreen = (route) => {
+//     const navigationAction = NavigationActions.navigate({
+//         routeName: route
+//     })
+//     this.props.navigation.dispatch(navigationAction)
+// }
 }
 
 const styles = StyleSheet.create({

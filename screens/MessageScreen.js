@@ -79,7 +79,7 @@ export default class MessageScreen extends React.Component {
     });
 
     // for demo purpose
-    //this.answerDemo(messages);
+    this.answerDemo(messages);
   }
 
   answerDemo(messages) {
