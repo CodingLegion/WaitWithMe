@@ -91,7 +91,7 @@ export default class SearchScreen extends React.Component {
   }
 
   render() {
-    return (
+    return (  
       <ScrollView style={styles.container} contentContainerStyle={{
         flex: 1,
         flexDirection: 'column',
