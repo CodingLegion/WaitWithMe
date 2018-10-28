@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Scene, Actions, ActionConst } from 'react-native-router-flux';
+import { Router,Stack, Scene, Actions, ActionConst } from 'react-native-router-flux';
 
 import LoginScreen from './LoginScreen.1';
 import SecondScreen from './SecondScreen';
@@ -18,6 +18,11 @@ export default class Main extends Component {
 	          hideNavBar={true}
 	          initial={true}
 	        />
+					<Stack key='CustomNavBar'>
+							<Scene key='chatWindow'></Scene>
+							<Scene key='profileSettings' title="Profile Settings"></Scene>
+							<Scene key='radarSearch'></Scene>
+					</Stack>
 	        <Scene key="secondScreen"
 	          component={SecondScreen}
 	          animation='fade'
