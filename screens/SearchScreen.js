@@ -92,7 +92,7 @@ export default class SearchScreen extends React.Component {
   }
 
   render() {
-    return (  
+    return (
       <ScrollView style={styles.container} contentContainerStyle={{
         flex: 1,
         flexDirection: 'column',
@@ -151,7 +151,6 @@ export default class SearchScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     backgroundColor: '#fff',
   },
   separator: {

@@ -5,6 +5,10 @@ import {StyleSheet, View} from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 
 export default class MessagesScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Messages',
+  };
+
   state = {
     conversations: [],
   }

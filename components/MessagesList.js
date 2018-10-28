@@ -12,10 +12,6 @@ import Dimensions from 'Dimensions';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 
 export default class MessagesList extends React.Component {
-  static navigationOptions = {
-    title: 'Messages',
-  };
-
   onPress = (user) => {
     this.props.navigation.navigate('Chat');
   }
