@@ -38,11 +38,11 @@ export default class HomeScreen extends React.Component {
             <Text style={styles.getStartedText}>Get started by opening</Text>
 
             <View style={[styles.codeHighlightContainer, styles.homeScreenFilename]}>
-              <MonoText style={styles.codeHighlightText}>screens/HomeScreen.js</MonoText>
+              <MonoText style={styles.codeHighlightText}>screens/HomoScreen.js</MonoText>
             </View>
 
             <Text style={styles.getStartedText}>
-              Change this text and your app will automatically reload.
+              What should I change  Change this text and your app will automatically reload.
             </Text>
           </View>
 
