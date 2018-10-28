@@ -73,16 +73,31 @@ export default class SearchScreen extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {selected: null, users: null, isLoading: true}
+    this.state = {coordinates: null, selected: null, users: null, isLoading: true}
   }
 
   componentDidMount() {
+    this.getCoordinates();
     setTimeout(() => {
       this.setState({
         isLoading: false,
         users: mockedUsers,
       })
     },  1000)
+  }
+
+  getCoordinates = () => {
+    navigator.geolocation.getCurrentPosition(pos => {
+      const coordinates = pos.coords;
+      this.setState({ coordinates });
+
+      console.log('Your current position is:');
+      console.log(`Latitude : ${coordinates.latitude}`);
+      console.log(`Longitude: ${coordinates.longitude}`);
+      console.log(`More or less ${coordinates.accuracy} meters.`);
+    }, err => {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    })
   }
 
   onPress = (user) => {
