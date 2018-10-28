@@ -6,6 +6,7 @@ module.exports = [
     user: {
       _id: 1,
       name: 'Developer',
+      avatar: 'https://placeimg.com/140/140/any?1'
     },
     sent: true,
     received: true,
@@ -21,6 +22,7 @@ module.exports = [
     user: {
       _id: 2,
       name: 'React Native',
+      avatar: 'https://placeimg.com/140/140/any?2'
     },
   },
   {

@@ -1,6 +1,8 @@
 import { GiftedChat } from 'react-native-gifted-chat'
 import React from 'react';
 import MessagesList from '../components/MessagesList'
+import Wallpaper from './Wallpaper';
+import {StyleSheet, View} from 'react-native';
 
 export default class MessagesScreen extends React.Component {
   state = {
@@ -31,6 +33,18 @@ export default class MessagesScreen extends React.Component {
   }
 
   render() {
-    return <MessagesList conversations={this.state.conversations} />
+    return (<Wallpaper>
+      <View style={styles.container}>
+        <MessagesList conversations={this.state.conversations} />
+      </View>
+      </Wallpaper>) 
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
+});
