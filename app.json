@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "MeetWithMe2",
+    "name": "WaitWithMe",
     "description": "A very interesting project.",
-    "slug": "MeetWithMe2",
+    "slug": "WaitWithMe",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": [
