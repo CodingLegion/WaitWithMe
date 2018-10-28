@@ -18,6 +18,21 @@ export default class Main extends Component {
 	          hideNavBar={true}
 	          initial={true}
 	        />
+					<Stack key='CustomNavBar'>
+							<Scene key='chatWindow'></Scene>
+							<Scene key='profileSettings' title="Profile Settings"></Scene>
+							<Scene key='radarSearch'></Scene>
+					</Stack>
+	        <Scene key="secondScreen"
+	          component={SecondScreen}
+	          animation='fade'
+	          hideNavBar={true}
+	        />
+					<Scene key="messagesScreen"
+						component={MessagesScreen}
+						animation='fade'
+						hideNavBar={true}
+					/>
 					<Scene key='registrationScreen'
 						component={RegPageScreen}
 						animation='fade'

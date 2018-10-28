@@ -1,4 +1,3 @@
-import { GiftedChat } from 'react-native-gifted-chat';
 import React from 'react';
 import {
   Platform,
@@ -10,6 +9,7 @@ import {
 import {GiftedChat, Actions, Bubble, SystemMessage} from 'react-native-gifted-chat';
 import CustomActions from './CustomActions';
 import CustomView from './CustomView';
+import SocketIOClient from 'socket.io-client';
 
 export default class MessageScreen extends React.Component {
   constructor(props) {
@@ -34,6 +34,8 @@ export default class MessageScreen extends React.Component {
     this.showUserAvatar = true
 
     this._isAlright = null;
+    this.socket = SocketIOClient('http://localhost:32771');
+    this.socket.emit('channel1', 'Hi server');
   }
 
   componentWillMount() {
