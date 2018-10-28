@@ -25,7 +25,7 @@ const mockedUsers = [
     id: "2",
     name: "Jaden",
     topics: ["IT"],
-    work:"University Of Manchester"
+    work:"University Of Manchester in Manchester in the United Kingdom"
   },
   {
     id: "3",
@@ -120,6 +120,7 @@ export default class SearchScreen extends React.Component {
                             {`Occupy: ${work}\nInterested in: ${topics}`}
                           </Text>
                           <Icon
+                            style={styles.lineItemButton}
                             raised
                             name='comments'
                             type='font-awesome'
@@ -154,14 +155,19 @@ const styles = StyleSheet.create({
     marginLeft: '10%',
     lineHeight: 40
   },
-  lineItemDescription: {
-    color: 'white',
-  },
   listItemDetails: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginLeft: '10%',
+    marginRight: '10%',
+  },
+  lineItemDescription: {
+    flex: 3,
+    color: 'white',
+  },
+  lineItemButton: {
+    flex: 1,
   },
   listItemHighlighted: {
     marginLeft: 0,
