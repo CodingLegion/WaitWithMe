@@ -28,7 +28,9 @@ export default class SecondScreen extends Component {
   }
   _onPressClear = async ()=>{
     await AsyncStorage.removeItem('UserToken');
-    Actions.landingPage();
+    console.log(this.props.navigation)
+    this.props.navigation.navigate('AuthLoading');
+
   }
   _onPress() {
     if (this.state.isLoading) return;
@@ -42,7 +44,7 @@ export default class SecondScreen extends Component {
     }).start();
 
     setTimeout(() => {
-      Actions.pop();
+      this.props.navigation.navigate('AuthLoading')
     }, 500);
   }
 

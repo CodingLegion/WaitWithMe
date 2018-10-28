@@ -54,9 +54,10 @@ export default class ButtonSubmit extends Component {
     setTimeout(() => {
       this._onGrow();
     }, 2000);
-
+    console.log(this.props)
+    this.props.data.navigation.navigate('AuthLoading')
     setTimeout(() => {
-      Actions.landingScreen();
+     
       this.setState({isLoading: false});
       this.buttonAnimated.setValue(0);
       this.growAnimated.setValue(0);
