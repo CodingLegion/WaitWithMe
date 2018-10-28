@@ -5,7 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import SettingsScreen from '../screens/SettingsScreen';
 import SearchScreen from '../screens/SearchScreen';
-import MessageScreen from '../screens/MessageScreen';
+import MessagesScreen from '../screens/MessagesScreen';
 import SecondScreen from '../screens/SecondScreen';
 
 // const HomeStack = createStackNavigator({
@@ -27,7 +27,7 @@ import SecondScreen from '../screens/SecondScreen';
 // };
 
 const MessagesStack = createStackNavigator({
-  Links: MessageScreen,
+  Links: MessagesScreen,
 });
 
 MessagesStack.navigationOptions = {

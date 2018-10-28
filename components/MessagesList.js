@@ -1,12 +1,83 @@
 import React from 'react';
-import { Text } from 'react-native';
-import Actions from 'react-native-router-flux';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableHighlight,
+  View,
+  Platform
+} from 'react-native';
 
 export default class MessagesList extends React.Component {
+  static navigationOptions = {
+    title: 'Messages',
+  };
+
+  onPress = (user) => {
+    this.props.navigation.navigate('Chat');
+  }
 
   render() {
-    return this.props.conversations.map((conversation, index) => {
-      return <Text key={index} onPress={()=> Actions.messageScreen()} style={{fontWeight: 'bold'}}>{conversation.name}</Text>
-    })
+    return (
+      <View>
+        <FlatList
+          ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
+            <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
+          ))}
+          data={this.props.conversations.map(user => ({ key: `user-${user._id}`, ...user }))}
+          renderItem={({item, separators}) => {
+            const { id, name } = item;
+            return (
+              <TouchableHighlight
+                underlayColor='#b967ff'
+                onPress={() => this.onPress(id)}
+                onShowUnderlay={separators.highlight}
+                onHideUnderlay={separators.unhighlight}>
+                <View>
+                  <Text style={styles.listItem}>{name}</Text>
+                </View>
+              </TouchableHighlight>
+          )}}
+        />
+      </View>
+    );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    paddingTop: 15,
+    backgroundColor: '#fff',
+  },
+  separator: {
+    backgroundColor: 'lightgray',
+    marginLeft: '8%',
+    marginRight: '8%',
+    height: 1
+  },
+  listItem: {
+    fontSize: 20,
+    color: 'white',
+    marginLeft: '10%',
+    lineHeight: 40
+  },
+  listItemDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginLeft: '10%',
+    marginRight: '10%',
+  },
+  lineItemDescription: {
+    flex: 3,
+    color: 'white',
+  },
+  lineItemButton: {
+    flex: 1,
+  },
+  listItemHighlighted: {
+    marginLeft: 0,
+    marginRight: 0,
+  }
+});

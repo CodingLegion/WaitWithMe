@@ -35,7 +35,7 @@ export default class MessagesScreen extends React.Component {
   render() {
     return (<Wallpaper>
       <View style={styles.container}>
-        <MessagesList conversations={this.state.conversations} />
+        <MessagesList navigation={this.props.navigation} conversations={this.state.conversations} />
       </View>
       </Wallpaper>)
   }

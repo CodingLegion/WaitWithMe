@@ -6,7 +6,7 @@ import Main from '../screens/MainScreen';
 import Login from '../screens/LoginScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import SecondScreen from '../screens/SecondScreen';
-import MessegesScreen from '../screens/MessagesScreen';
+import MessagesScreen from '../screens/MessagesScreen';
 import RegPageScreen from '../screens/RegPageScreen';
 import ButtonSubmit from '../screens/ButtonSubmit';
 import SearchScreen from '../screens/SearchScreen';
@@ -17,6 +17,7 @@ import MessageScreen from '../screens/MessageScreen'
 const ConnectStack = createStackNavigator({
       Tabs:Test,
       Chat:MessageScreen,
+      Messages:MessagesScreen
 },{
 headerMode:'none'
 })
