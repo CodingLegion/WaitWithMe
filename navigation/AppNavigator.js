@@ -6,21 +6,17 @@ import Main from '../screens/MainScreen';
 import Login from '../screens/LoginScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import SecondScreen from '../screens/SecondScreen';
-import SearchScreen from '../screens/SearchScreen';
 import MessegesScreen from '../screens/MessagesScreen';
 import RegPageScreen from '../screens/RegPageScreen';
 import ButtonSubmit from '../screens/ButtonSubmit';
-import RadarScreen from '../screens/SearchScreen';
 import SearchScreen from '../screens/SearchScreen';
 import Test from '../navigation/MainTabNavigator';
 
-const AppStack = createStackNavigator({
-      Main:SecondScreen,
-      Scanner:SearchScreen,
-      Chat:MessegesScreen,
-      ProfileSettings:SecondScreen,
-      Error:SecondScreen,
+import MessageScreen from '../screens/MessageScreen'
 
+const ConnectStack = createStackNavigator({
+      Tabs:Test,
+      Chat:MessageScreen,
 },{
 headerMode:'none'
 })
@@ -38,5 +34,5 @@ export default createSwitchNavigator({
   // Read more at https://reactnavigation.org/docs/en/auth-flow.html
   AuthLoading:AuthLoadingScreen,
   Auth:AuthStack,
-  App:Test
+  App:ConnectStack
 },{initialRouteName:'AuthLoading'});

@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import Logo from './Logo';
-import Form from './Form';
 import Wallpaper from './Wallpaper';
-import ButtonSubmit from './ButtonSubmit';
-import SignupSection from './SignupSection';
 import logoImg from '../images/logo.png';
 import spinner from '../images/loading.gif';
 import Dimensions from 'Dimensions';
@@ -13,10 +8,8 @@ import {  StyleSheet,
   View,
   Animated,
   Easing,
-  ActivityIndicator,
   Text,
   AsyncStorage,
-  TextInput,
   TouchableOpacity,
   Image
 } from 'react-native';
@@ -25,6 +18,9 @@ import UserInput from './UserInput';
 import usernameImg from '../images/username.png';
 import passwordImg from '../images/password.png';
 import eyeImg from '../images/eye_black.png';
+import Api from '../constants/Api'
+
+
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
@@ -54,17 +50,27 @@ export default class LoginScreen extends Component {
       ? this.setState({showPass: false, press: true})
       : this.setState({showPass: true, press: false});
   }
-  _onPress() {
-    if (this.state.isLoading) return;
-    let store_data = async ()=>{
-      try{
-        await  AsyncStorage.setItem('UserToken','abc1337');
-      }catch(e){
-       console.log(e)
-      }
+  
+  async store_token(token) {
+    try{
+      await  AsyncStorage.setItem('UserToken', token);
+    }catch(e){
+     console.log(e)   
     }
+  }
+  
+  async storeApiResponse(apiResponse) {
+    try{
+      await  AsyncStorage.setItem('ApiResponse', JSON.stringify(apiResponse));
+    }catch(e){
+     console.log(e)   
+    }
+  }
+
+  _onPress() {
+    // if (this.state.isLoading) return;
     console.log('Button Pressed')
-    store_data();
+    this.loginRequest()  
     this.setState({isLoading: true});
     Animated.timing(this.buttonAnimated, {
       toValue: 1,
@@ -76,6 +82,22 @@ export default class LoginScreen extends Component {
       this._onGrow();
     }, 2000);
     this.props.navigation.navigate('Scanner');
+  }
+
+  loginRequest() {
+    return Api.login().then((response) => {
+      this.store_token(response.headers.get('authorization'));
+      return response.json()
+    })
+      .then((responseJson) => {
+        
+        this.storeApiResponse(responseJson);
+
+        return responseJson;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   _onGrow() {
