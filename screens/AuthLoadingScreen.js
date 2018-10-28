@@ -8,14 +8,15 @@ export default class AuthLoadingScreen extends React.Component{
     }
     _boostrapAsync = async ()=>{
         const userToken = await AsyncStorage.getItem('UserToken');
+        console.log('userToken',userToken)
         this.props.navigation.navigate(userToken? 'App':'Auth');
-
+            
     } 
     render(){
         return (
             <View>
                 <ActivityIndicator />
-                <StatusBar barStyle="default" />
+                <StatusBar hidden={true} barStyle="default" />
             </View>
         )
     }

@@ -5,12 +5,23 @@ import MainTabNavigator from './MainTabNavigator';
 import Main from '../screens/MainScreen';
 import Login from '../screens/SecondScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
+import SecondScreen from '../screens/SecondScreen';
 
 const AppStack = createStackNavigator({
-      Main:Main
+      Main:Login,
+      Scanner:SecondScreen,
+      Chat:MessegesScreen,
+      ProfileSettings:ProfileScreen,
+      Error:ErrorScreen
+},{
+headerMode:'none'
 })
 const AuthStack = createStackNavigator({
-    SignIn:Login
+    SignIn:Main,
+    Registration:RegPageScreen,
+    Error:ErrorScreen
+},{
+  headerMode:'none'
 });
 export default createSwitchNavigator({
   // You could add another route here for authentication.

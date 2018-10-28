@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Dimensions from 'Dimensions';
 import {
+  AsyncStorage,
   StyleSheet,
   TouchableOpacity,
   Text,
@@ -20,8 +21,8 @@ const DEVICE_HEIGHT = Dimensions.get('window').height;
 const MARGIN = 40;
 
 export default class ButtonSubmit extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isLoading: false,
@@ -34,7 +35,15 @@ export default class ButtonSubmit extends Component {
 
   _onPress() {
     if (this.state.isLoading) return;
-
+    let store_data = async ()=>{
+      try{
+        await  AsyncStorage.setItem('UserToken','abc1337');
+      }catch(e){
+       console.log(e)   
+      }
+    }
+    console.log('Button Pressed')
+    store_data();  
     this.setState({isLoading: true});
     Animated.timing(this.buttonAnimated, {
       toValue: 1,
@@ -47,13 +56,12 @@ export default class ButtonSubmit extends Component {
     }, 2000);
 
     setTimeout(() => {
-      Actions.secondScreen();
+      Actions.landingScreen();
       this.setState({isLoading: false});
       this.buttonAnimated.setValue(0);
       this.growAnimated.setValue(0);
     }, 2300);
   }
-
   _onGrow() {
     Animated.timing(this.growAnimated, {
       toValue: 1,
@@ -97,7 +105,7 @@ export default class ButtonSubmit extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    top: -95,
+    top: 0,
     alignItems: 'center',
     justifyContent: 'flex-start',
   },

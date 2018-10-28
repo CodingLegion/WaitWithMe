@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {
+  AsyncStorage,
   StyleSheet,
   View,
   Image,
@@ -25,7 +26,10 @@ export default class SecondScreen extends Component {
     this._onPress = this._onPress.bind(this);
     this.growAnimated = new Animated.Value(0);
   }
-
+  _onPressClear = async ()=>{
+    await AsyncStorage.removeItem('UserToken');
+    Actions.landingPage();
+  }
   _onPress() {
     if (this.state.isLoading) return;
 
@@ -56,6 +60,12 @@ export default class SecondScreen extends Component {
           activeOpacity={1}>
           <Image style={styles.image} source={arrowImg} />
         </TouchableOpacity>
+        <TouchableOpacity
+          onPress={this._onPressClear}
+          style={styles.button2}
+          activeOpacity={0.5}>
+          <Image style={styles.image} source={arrowImg} />
+        </TouchableOpacity>
         <Animated.View
           style={[styles.circle, {transform: [{scale: changeScale}]}]}
         />
@@ -80,12 +90,28 @@ const styles = StyleSheet.create({
     zIndex: 99,
     backgroundColor: '#F035E0',
   },
+  button2: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: SIZE,
+    height: SIZE,
+    borderRadius: 100,
+    zIndex: 99,
+    backgroundColor: '#ccc',
+  },
   circle: {
     height: SIZE,
     width: SIZE,
     marginTop: -SIZE,
     borderRadius: 100,
     backgroundColor: '#F035E0',
+  },
+  circle: {
+    height: SIZE,
+    width: SIZE,
+    marginTop: -SIZE,
+    borderRadius: 100,
+    backgroundColor: '#ccc',
   },
   image: {
     width: 24,

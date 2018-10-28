@@ -7,13 +7,23 @@ import ButtonSubmit from './ButtonSubmit';
 import SignupSection from './SignupSection';
 
 export default class LoginScreen extends Component {
+  constructor(){
+    super()
+    this.state ={
+
+    }
+    this.onRegistrationHandler = this.registrationHandler.bind(this);
+  }
+  registrationHandler(data){
+     this.setState({data:data}); 
+  }
   render() {
     return (
       <Wallpaper>
         <Logo />
         <Form />
         <SignupSection />
-        <ButtonSubmit />
+       
       </Wallpaper>
     );
   }

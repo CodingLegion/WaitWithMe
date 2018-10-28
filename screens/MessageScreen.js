@@ -1,4 +1,4 @@
-import { GiftedChat } from 'react-native-gifted-chat'
+import { GiftedChat } from 'react-native-gifted-chat';
 import React from 'react';
 
 export default class MessageScreen extends React.Component {

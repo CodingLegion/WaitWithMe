@@ -58,7 +58,9 @@ export default class Form extends Component {
           onPress={this.showPass}>
           <Image source={eyeImg} style={styles.iconEye} />
         </TouchableOpacity>
+        <ButtonSubmit data={{username:'a',password:'b'}}/>
       </KeyboardAvoidingView>
+      
     );
   }
 }
