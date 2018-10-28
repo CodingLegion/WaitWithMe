@@ -4,6 +4,7 @@ import { Router, Scene, Actions, ActionConst } from 'react-native-router-flux';
 import LoginScreen from './LoginScreen.1';
 import SecondScreen from './SecondScreen';
 import MessagesScreen from './MessagesScreen';
+import RegForm from './RegForm';
 
 export default class Main extends Component {
   render() {
@@ -26,7 +27,14 @@ export default class Main extends Component {
 						animation='fade'
 						hideNavBar={true}
 					/>
+					<Scene key='registrationScreen'
+						component={RegForm}
+						animation='fade'
+						hideNavBar={true}
+						></Scene>
+	    	
 	      </Scene>
+					
 	    </Router>
 	  );
 	}

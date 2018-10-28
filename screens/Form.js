@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   btnEye: {
-    position: 'absolute',
-    top: 55,
+    position: "absolute",
+    top: 75,
     right: 28,
   },
   iconEye: {
