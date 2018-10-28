@@ -1,12 +1,8 @@
 import { GiftedChat } from 'react-native-gifted-chat';
 import React from 'react';
-<<<<<<< HEAD
 import MessagesList from '../components/MessagesList'
 import Wallpaper from './Wallpaper';
 import {StyleSheet, View} from 'react-native';
-=======
-import MessagesList from '../components/MessagesList';
->>>>>>> Authnetication-and-routing
 
 export default class MessagesScreen extends React.Component {
   state = {
