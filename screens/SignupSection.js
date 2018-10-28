@@ -14,7 +14,7 @@ export default class SignupSection extends Component {
 
   }
   _onPress(){
-   Actions.registrationScreen(); 
+   this.props.navigation.navigate('Registration')
   }
   render() {
     return (
@@ -23,6 +23,7 @@ export default class SignupSection extends Component {
         <Text style={styles.text}>Forgot Password?</Text>
       </View>
     );
+    
   }
 }
 

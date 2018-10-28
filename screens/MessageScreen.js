@@ -1,3 +1,4 @@
+import { GiftedChat } from 'react-native-gifted-chat';
 import React from 'react';
 import {
   Platform,

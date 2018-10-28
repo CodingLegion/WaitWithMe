@@ -35,6 +35,7 @@ export default class Form extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <KeyboardAvoidingView behavior="padding" style={styles.container}>
         <UserInput
@@ -58,7 +59,9 @@ export default class Form extends Component {
           onPress={this.showPass}>
           <Image source={eyeImg} style={styles.iconEye} />
         </TouchableOpacity>
+        <ButtonSubmit data={{username:'a',password:'b',navigation:this.props.navigation}}/>
       </KeyboardAvoidingView>
+      
     );
   }
 }
