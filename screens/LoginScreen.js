@@ -47,7 +47,7 @@ export default class LoginScreen extends Component {
     this.props.navigation.navigate('Registration')
    }
   registrationHandler(data) {
-    this.setState({ data: data });
+    //this.setState({ data: data });
   }
   showPass() {
     this.state.press === false
@@ -77,14 +77,8 @@ export default class LoginScreen extends Component {
     }, 2000);
     console.log(this.props)
     this.props.navigation.navigate('AuthLoading');
-
-    setTimeout(() => {
-     
-      this.setState({isLoading: false});
-      this.buttonAnimated.setValue(0);
-      this.growAnimated.setValue(0);
-    }, 2300);
   }
+
   _onGrow() {
     Animated.timing(this.growAnimated, {
       toValue: 1,
