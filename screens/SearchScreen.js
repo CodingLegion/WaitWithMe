@@ -12,6 +12,7 @@ import {
 import { Icon } from 'react-native-elements'
 
 import Radar from '../components/Radar';
+import Wallpaper from './Wallpaper';
 
 const mockedUsers = [
   {
@@ -24,7 +25,7 @@ const mockedUsers = [
     id: "2",
     name: "Jaden",
     topics: ["IT"],
-    work:"University Of Manchester"
+    work:"University Of Manchester in Manchester in the United Kingdom"
   },
   {
     id: "3",
@@ -90,45 +91,48 @@ export default class SearchScreen extends React.Component {
   }
 
   render() {
-    return (
+    return (  
       <ScrollView style={styles.container} contentContainerStyle={{
         flex: 1,
         flexDirection: 'column',
         justifyContent: 'space-between'
-      }}>
-        <Radar />
-        {!this.state.isLoading && (
-          <FlatList
-            ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
-              <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
-            ))}
-            data={this.state.users && this.state.users.map(user => ({ key: `user-${user.id}`, ...user }))}
-            renderItem={({item, separators}) => {
-              const { id, name, topics, work } = item;
-
-              return (
-                <TouchableHighlight
-                  onPress={() => this.onPress(id)}
-                  onShowUnderlay={separators.highlight}
-                  onHideUnderlay={separators.unhighlight}>
-                  <View style={{backgroundColor: 'white'}}>
-                    <Text style={styles.listItem}>{name}</Text>
-                    {this.state.selected === id && (<View style={styles.listItemDetails}>
-                      <Text style={styles.lineItemDescription}>
-                        {`Occupy: ${work}\nInterested in: ${topics}`}
-                      </Text>
-                      <Icon
-                        raised
-                        name='comments'
-                        type='font-awesome'
-                        onPress={() => console.log('hello')} />
-                    </View>)}
-                  </View>
-                </TouchableHighlight>
-            )}}
-          />)
-        }
-      </ScrollView>
+        }}>
+          <Wallpaper>
+            <Radar />
+            {!this.state.isLoading && (
+              <FlatList
+                ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
+                  <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
+                ))}
+                data={this.state.users && this.state.users.map(user => ({ key: `user-${user.id}`, ...user }))}
+                renderItem={({item, separators}) => {
+                  const { id, name, topics, work } = item;
+                  return (
+                    <TouchableHighlight
+                      underlayColor='#b967ff'
+                      onPress={() => this.onPress(id)}
+                      onShowUnderlay={separators.highlight}
+                      onHideUnderlay={separators.unhighlight}>
+                      <View>
+                        <Text style={styles.listItem}>{name}</Text>
+                        {this.state.selected === id && (<View style={styles.listItemDetails}>
+                          <Text style={styles.lineItemDescription}>
+                            {`Occupy: ${work}\nInterested in: ${topics}`}
+                          </Text>
+                          <Icon
+                            style={styles.lineItemButton}
+                            raised
+                            name='comments'
+                            type='font-awesome'
+                            onPress={() => console.log('hello')} />
+                        </View>)}
+                      </View>
+                    </TouchableHighlight>
+                )}}
+                />)
+              }
+            </Wallpaper>
+        </ScrollView>
     );
   }
 }
@@ -147,20 +151,26 @@ const styles = StyleSheet.create({
   },
   listItem: {
     fontSize: 20,
+    color: 'white',
     marginLeft: '10%',
     lineHeight: 40
   },
-  lineItemDescription: {
-  },
   listItemDetails: {
-    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
     marginLeft: '10%',
+    marginRight: '10%',
+  },
+  lineItemDescription: {
+    flex: 3,
+    color: 'white',
+  },
+  lineItemButton: {
+    flex: 1,
   },
   listItemHighlighted: {
     marginLeft: 0,
     marginRight: 0,
-    backgroundColor: 'gray'
   }
 });

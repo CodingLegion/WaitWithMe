@@ -31,7 +31,7 @@ const MARGIN = 40;
 export default class LoginScreen extends Component {
   constructor() {
     super()
-  
+
     this.state = {
       showPass: true,
       press: false,
@@ -60,11 +60,11 @@ export default class LoginScreen extends Component {
       try{
         await  AsyncStorage.setItem('UserToken','abc1337');
       }catch(e){
-       console.log(e)   
+       console.log(e)
       }
     }
     console.log('Button Pressed')
-    store_data();  
+    store_data();
     this.setState({isLoading: true});
     Animated.timing(this.buttonAnimated, {
       toValue: 1,
@@ -75,8 +75,7 @@ export default class LoginScreen extends Component {
     setTimeout(() => {
       this._onGrow();
     }, 2000);
-    console.log(this.props)
-    this.props.navigation.navigate('AuthLoading');
+    this.props.navigation.navigate('Scanner');
   }
 
   _onGrow() {
@@ -125,7 +124,7 @@ export default class LoginScreen extends Component {
           </TouchableOpacity>
 
 
-          
+
           <View style={stylesSubmit.container}>
             <Animated.View style={{ width: changeWidth }}>
               <TouchableOpacity
@@ -142,9 +141,9 @@ export default class LoginScreen extends Component {
                 style={[stylesSubmit.circle, { transform: [{ scale: changeScale }] }]}
               />
             </Animated.View>
-           
-          </View> 
-         
+
+          </View>
+
         </KeyboardAvoidingView>
 
          <View style={stylesSignUp.container}>
