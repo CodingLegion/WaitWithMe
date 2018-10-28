@@ -5,6 +5,7 @@ import LoginScreen from './LoginScreen.1';
 import SecondScreen from './SecondScreen';
 import MessagesScreen from './MessagesScreen';
 import RegForm from './RegForm';
+import MessageScreen from './MessageScreen';
 
 export default class Main extends Component {
   render() {
@@ -32,7 +33,11 @@ export default class Main extends Component {
 						animation='fade'
 						hideNavBar={true}
 						></Scene>
-	    	
+					<Scene key="messageScreen"
+						component={MessageScreen}
+						animation='fade'
+						hideNavBar={true}
+					/>
 	      </Scene>
 					
 	    </Router>
