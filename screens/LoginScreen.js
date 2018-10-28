@@ -14,31 +14,45 @@ import {  StyleSheet,
   Animated,
   Easing,
   ActivityIndicator,
+  Text,
+  AsyncStorage,
+  TextInput,
   TouchableOpacity,
   Image
 } from 'react-native';
+import UserInput from './UserInput';
+
+import usernameImg from '../images/username.png';
+import passwordImg from '../images/password.png';
+import eyeImg from '../images/eye_black.png';
 const DEVICE_WIDTH = Dimensions.get('window').width;
 const DEVICE_HEIGHT = Dimensions.get('window').height;
-
 const MARGIN = 40;
 export default class LoginScreen extends Component {
   constructor() {
     super()
+  
     this.state = {
-
-    }
-    
+      showPass: true,
+      press: false,
+    };
+    this.showPass = this.showPass.bind(this);
     this.buttonAnimated = new Animated.Value(0);
     this.growAnimated = new Animated.Value(0);
     this._onPress = this._onPress.bind(this);
     this._onPressRegister = this._onPressRegister.bind(this);
     this.onRegistrationHandler = this.registrationHandler.bind(this);
   }
-  _onPress(){
+  _onPressRegister(){
     this.props.navigation.navigate('Registration')
    }
   registrationHandler(data) {
     this.setState({ data: data });
+  }
+  showPass() {
+    this.state.press === false
+      ? this.setState({showPass: false, press: true})
+      : this.setState({showPass: true, press: false});
   }
   _onPress() {
     if (this.state.isLoading) return;
@@ -62,7 +76,8 @@ export default class LoginScreen extends Component {
       this._onGrow();
     }, 2000);
     console.log(this.props)
-    this.props.data.navigation.navigate('AuthLoading')
+    this.props.navigation.navigate('AuthLoading');
+
     setTimeout(() => {
      
       this.setState({isLoading: false});
@@ -93,27 +108,30 @@ export default class LoginScreen extends Component {
           <Text style={stylesLogo.text}>Making your waiting and commuting a fun time time</Text>
         </View>
         <KeyboardAvoidingView behavior="padding" style={stylesForm.container}>
-          <UserInput
-            source={usernameImg}
-            placeholder="Username"
-            autoCapitalize={'none'}
-            returnKeyType={'done'}
-            autoCorrect={false}
-          />
-          <UserInput
-            source={passwordImg}
-            secureTextEntry={this.state.showPass}
-            placeholder="Password"
-            returnKeyType={'done'}
-            autoCapitalize={'none'}
-            autoCorrect={false}
-          />
+        <UserInput
+          source={usernameImg}
+          placeholder="Username"
+          autoCapitalize={'none'}
+          returnKeyType={'done'}
+          autoCorrect={false}
+        />
+        <UserInput
+          source={passwordImg}
+          secureTextEntry={this.state.showPass}
+          placeholder="Password"
+          returnKeyType={'done'}
+          autoCapitalize={'none'}
+          autoCorrect={false}
+        />
           <TouchableOpacity
             activeOpacity={0.7}
             style={stylesForm.btnEye}
             onPress={this.showPass}>
             <Image source={eyeImg} style={stylesForm.iconEye} />
           </TouchableOpacity>
+
+
+          
           <View style={stylesSubmit.container}>
             <Animated.View style={{ width: changeWidth }}>
               <TouchableOpacity
@@ -130,7 +148,9 @@ export default class LoginScreen extends Component {
                 style={[stylesSubmit.circle, { transform: [{ scale: changeScale }] }]}
               />
             </Animated.View>
-          </View>
+           
+          </View> 
+         
         </KeyboardAvoidingView>
 
          <View style={stylesSignUp.container}>
@@ -178,6 +198,7 @@ const stylesForm = StyleSheet.create({
     tintColor: 'rgba(0,0,0,0.2)',
   },
 });
+
 const stylesSubmit = StyleSheet.create({
   container: {
     flex: 1,
