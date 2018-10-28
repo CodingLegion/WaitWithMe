@@ -75,8 +75,7 @@ export default class LoginScreen extends Component {
     setTimeout(() => {
       this._onGrow();
     }, 2000);
-    console.log(this.props)
-    this.props.navigation.navigate('AuthLoading');
+    this.props.navigation.navigate('Scanner');
   }
 
   _onGrow() {

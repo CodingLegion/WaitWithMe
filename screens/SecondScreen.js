@@ -26,6 +26,14 @@ export default class SecondScreen extends Component {
     this._onPress = this._onPress.bind(this);
     this.growAnimated = new Animated.Value(0);
   }
+  onComponentWillMount(){
+    _test = async ()=>{
+      await AsyncStorage.removeItem('UserToken');
+      console.log(this.props.navigation)
+      this.props.navigation.navigate('AuthLoading');
+    }
+    _test();
+  }
   _onPressClear = async ()=>{
     await AsyncStorage.removeItem('UserToken');
     console.log(this.props.navigation)

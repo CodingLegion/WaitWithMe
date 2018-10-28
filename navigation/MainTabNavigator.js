@@ -1,31 +1,30 @@
 import React from 'react';
-import { Platform } from 'react-native';
+import {View, AsyncStorage,Text, Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import SearchScreen from '../screens/SearchScreen';
 import MessagesScreen from '../screens/MessagesScreen';
+import SecondScreen from '../screens/SecondScreen';
 
-const HomeStack = createStackNavigator({
-  Home: HomeScreen,
-});
+// const HomeStack = createStackNavigator({
+//   Home: HomeScreen,
+// });
 
-HomeStack.navigationOptions = {
-  tabBarLabel: 'Home',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={
-        Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
-      }
-    />
-  ),
-};
+// HomeStack.navigationOptions = {
+//   tabBarLabel: 'Home',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={
+//         Platform.OS === 'ios'
+//           ? `ios-information-circle${focused ? '' : '-outline'}`
+//           : 'md-information-circle'
+//       }
+//     />
+//   ),
+// };
 
 const MessagesStack = createStackNavigator({
   Links: MessagesScreen,
@@ -45,19 +44,19 @@ MessagesStack.navigationOptions = {
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
-});
+// const LinksStack = createStackNavigator({
+//   Links: LinksScreen,
+// });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
-    />
-  ),
-};
+// LinksStack.navigationOptions = {
+//   tabBarLabel: 'Links',
+//   tabBarIcon: ({ focused }) => (
+//     <TabBarIcon
+//       focused={focused}
+//       name={Platform.OS === 'ios' ? `ios-link${focused ? '' : '-outline'}` : 'md-link'}
+//     />
+//   ),
+// };
 
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
@@ -72,7 +71,18 @@ SettingsStack.navigationOptions = {
     />
   ),
 };
-
+const LogoutButton = createStackNavigator(
+  {Logout:SecondScreen}
+);
+LogoutButton.navigationOptions ={
+  tabBarLabel: 'Logout',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? `ios-search${focused ? '' : '-outline'}` : 'md-search'}
+    />
+  ),
+}
 const SearchStack = createStackNavigator({
   Search: SearchScreen,
 });
@@ -88,9 +98,8 @@ SearchStack.navigationOptions = {
 };
 
 export default createBottomTabNavigator({
-  HomeStack,
   SearchStack,
-  LinksStack,
   SettingsStack,
   MessagesStack,
+  LogoutButton
 });
