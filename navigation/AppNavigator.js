@@ -6,22 +6,24 @@ import Main from '../screens/MainScreen';
 import Login from '../screens/LoginScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import SecondScreen from '../screens/SecondScreen';
+import SearchScreen from '../screens/SearchScreen';
 import MessegesScreen from '../screens/MessagesScreen';
 import RegPageScreen from '../screens/RegPageScreen';
 import ButtonSubmit from '../screens/ButtonSubmit';
 
 const AppStack = createStackNavigator({
       Main:SecondScreen,
-      Scanner:SecondScreen,
+      Scanner:SearchScreen,
       Chat:MessegesScreen,
       ProfileSettings:SecondScreen,
       Error:SecondScreen,
-     
+
 },{
 headerMode:'none'
 })
 const AuthStack = createStackNavigator({
     SignIn:Login,
+    Search:SearchScreen,
     Registration:RegPageScreen,
     SignUpButton:ButtonSubmit,
     Error:SecondScreen
