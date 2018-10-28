@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { Icon } from 'react-native-elements'
 
+import Radar from '../components/Radar';
+
 const mockedUsers = [
   {
     id: "1",
@@ -35,6 +37,30 @@ const mockedUsers = [
     name: "Alex",
     topics: ["IT"],
     work:"University Of Manchester"
+  },
+  {
+    id: "5",
+    name: "Adam",
+    topics: ["sport", "music"],
+    work: "University Of Manchester"
+  },
+  {
+    id: "6",
+    name: "Maciej",
+    topics: ["IT"],
+    work:"University Of Manchester"
+  },
+  {
+    id: "7",
+    name: "Grzegorz",
+    topics: ["sport", "music"],
+    work: "University Of Manchester"
+  },
+  {
+    id: "8",
+    name: "Ada",
+    topics: ["sport", "music"],
+    work: "University Of Manchester"
   }
 ];
 
@@ -64,45 +90,44 @@ export default class SearchScreen extends React.Component {
   }
 
   render() {
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
-      )
-    }
-
     return (
-      <ScrollView style={styles.container}>
-        <FlatList
-          ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
-            <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
-          ))}
-          data={this.state.users && this.state.users.map(user => ({ key: `user-${user.id}`, ...user }))}
-          renderItem={({item, separators}) => {
-            const { id, name, topics, work } = item;
+      <ScrollView style={styles.container} contentContainerStyle={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <Radar />
+        {!this.state.isLoading && (
+          <FlatList
+            ItemSeparatorComponent={Platform.OS !== 'android' && (({highlighted}) => (
+              <View style={[styles.separator, highlighted && styles.listItemHighlighted]} />
+            ))}
+            data={this.state.users && this.state.users.map(user => ({ key: `user-${user.id}`, ...user }))}
+            renderItem={({item, separators}) => {
+              const { id, name, topics, work } = item;
 
-            return (
-              <TouchableHighlight
-                onPress={() => this.onPress(id)}
-                onShowUnderlay={separators.highlight}
-                onHideUnderlay={separators.unhighlight}>
-                <View style={{backgroundColor: 'white'}}>
-                  <Text style={styles.listItem}>{name}</Text>
-                  {this.state.selected === id && (<View style={styles.listItemDetails}>
-                    <Text style={styles.lineItemDescription}>
-                      {`Occupy: ${work}\nInterested in: ${topics}`}
-                    </Text>
-                    <Icon
-                      raised
-                      name='comments'
-                      type='font-awesome'
-                      onPress={() => console.log('hello')} />
-                  </View>)}
-                </View>
-              </TouchableHighlight>
-          )}}
-        />
+              return (
+                <TouchableHighlight
+                  onPress={() => this.onPress(id)}
+                  onShowUnderlay={separators.highlight}
+                  onHideUnderlay={separators.unhighlight}>
+                  <View style={{backgroundColor: 'white'}}>
+                    <Text style={styles.listItem}>{name}</Text>
+                    {this.state.selected === id && (<View style={styles.listItemDetails}>
+                      <Text style={styles.lineItemDescription}>
+                        {`Occupy: ${work}\nInterested in: ${topics}`}
+                      </Text>
+                      <Icon
+                        raised
+                        name='comments'
+                        type='font-awesome'
+                        onPress={() => console.log('hello')} />
+                    </View>)}
+                  </View>
+                </TouchableHighlight>
+            )}}
+          />)
+        }
       </ScrollView>
     );
   }
